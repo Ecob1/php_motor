@@ -1,0 +1,175 @@
+body{
+    background-image: url("/phpmotors/images/site/checkerboard.jpg");
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.main{
+  background-color: #ffff;
+  width: 800px;
+  height: 1000px;
+  border: solid;
+  border-color: #4c96d7;
+  border-width: 4px;
+  padding-bottom: 0px;
+  
+}
+
+main .logo{
+  width: 200px;
+  height: 100px;
+}
+
+.nav{
+  background-color: #3d3d3d;
+  height: 40px;
+}
+
+li {
+  font-size: 1.1em;
+  list-style: none;
+  text-decoration: none;
+  display: inline-block;
+  gap: 40px;
+  margin-left: 10px;
+  margin-top: 7px;
+}
+
+.p-count{
+  float: right;
+  margin-right: 70px;
+  margin-top: 30px;
+}
+
+a{
+  color: #ffff;
+  display: inline;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+p{
+  margin-left: 20px;    
+}
+
+.footer{
+  margin: 0px;
+  padding: 0px;
+}
+
+
+footer{    
+  background-color: #ffff;
+  margin-bottom: 0px;
+  margin-top: 600px;
+  width: 100%;
+  bottom: 0px;
+}
+
+.first{
+  text-align: center;
+}
+
+.first{
+  text-align: center;
+}
+
+hr{
+background-color: #3d3d3d;
+height: 3px;
+}
+
+.text .first-Text{
+  margin-left: 20px;
+  color: #4c96d7;
+}
+
+.text{
+  display: flexbox;
+}
+
+.text .second-text{
+  color: #a6cbeb;
+  margin-left: 20px;
+}
+
+.delorean{
+  width: 700px;
+  height: 300px;
+  float: right;
+  margin-top: -100px;
+  margin-right: 30px;
+}
+
+.ownToday{
+  width: 100px;
+  margin-left: 30px;
+}
+
+@media screen and (max-width: 480px) {
+  body{
+    background-image: url("/phpmotors/images/site/checkerboard.jpg");
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  main{
+    background-image: url("site/checkerboard.jpg");
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .footer{
+    margin: 0px;
+    padding: 0px;
+  }
+
+
+  footer{    
+    background-color: #ffff;
+    margin-bottom: 0px;
+    width: 100%;
+    bottom: 0px;
+  }
+
+  .first{
+    text-align: center;
+  }
+
+  .first{
+    text-align: center;
+  }
+  
+  hr{
+  background-color: #3d3d3d;
+  height: 3px;
+  }
+  .text .first-Text{
+    margin-left: 20px;
+    color: #4c96d7;
+  }
+  
+  .text{
+    display: flexbox;
+  }
+  
+  .text .second-text{
+    color: #a6cbeb;
+    margin-left: 20px;
+  }
+  
+  .delorean{
+    width: 700px;
+    height: 300px;
+    float: right;
+    margin-top: -100px;
+    margin-right: 30px;
+  }
+  
+  .ownToday{
+    width: 100px;
+    margin-left: 30px;
+  }
+}
