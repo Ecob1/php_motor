@@ -30,7 +30,7 @@
     <p class="p-dmc"><b>DMC Delorean Reviews</b></p>
     <div class="bullets">        
       <ul>
-        <li>"So fast its almost like traveling in time." (4/5)</li>
+        <li>"So fast its almost like traveling in time." (4/5)</li> 
         <li>"Coolest ride on the road." (4/5)</li>
         <li>"I'm feeling Marty McFly!" (5/5)</li>
         <li>"The most futuristic ride of out day." (4.5/5)</li>
