@@ -12,7 +12,7 @@
 <!-- <img class="logo" src="site/logo.png" alt="logo"> -->
   <div class="main">
     <main>
-        <img class="logo" src="/phpmotors/images/site/logo.png" alt="logos">
+        <img class="logo" src="/phpmotors/images/site/logo.png" alt="logos">`
         <p class="p-count">My Account</p>
         <nav class="nav">
             <ul>
@@ -34,11 +34,12 @@
                 <p>All images used are believed to be "Fair use". Please notify the author if any are not and they will be Last updated:</p>
               </div>
               <div  class="first">
-                <p>11 December 2019</p>
+              <p>11 December 2019</p>
               </div>        
             </footer>
           </div>
     </main>
   </div>
+
 </body>
 </html>
