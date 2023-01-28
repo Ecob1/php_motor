@@ -12,16 +12,23 @@
     <main>
       
        <?php
-         require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header_nav.php'
+         require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header_nav.php';
         ?>
+        
+        <h1>Sign in</h1>
+        <div id="container">
+          <form action="login.php" method="post">
+          <label for='email'>Email</label><br>
+          <input name="email" id="email" type="text"><br>
+          <label for='password'>Password</label><br>
+          <input name="password" id='password' placeholder="Password"><br><br> 
+          <button type="submit">Sign in</button><br>
+          <a id="c-register" href="/phpmotors/accounts/index.php?action=register-view">Not a member yet?</a><br>
+          </form><br>
+        </div>       
         <?php
-          require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/login.php'
+          require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';
         ?>
-       
-        <?php
-          require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php'
-        ?>
-        </div>
     </main>
   </div>
 

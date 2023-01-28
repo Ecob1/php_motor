@@ -3,9 +3,9 @@
 
 // This is the account controller
 // Get the database connection file
-require_once 'library/connections.php';
+require_once './library/connections.php';
 // Get the PHP Motors model for use as needed
-require_once 'model/main-model.php';
+require_once './model/main-model.php';
 
 // Get the array of classifications from DB using model
 $classifications = getClassifications();
@@ -25,12 +25,6 @@ $action = filter_input(INPUT_GET, 'action');
  }
 
  switch ($action){
-   case 'login-view':    
-   include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/login.php';
-   break; 
-   case 'register-view':
-       include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/registration.php';
-       break;
    default:
    include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/home.php';
    
