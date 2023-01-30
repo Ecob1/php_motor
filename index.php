@@ -27,8 +27,6 @@ $action = filter_input(INPUT_GET, 'action');
  switch ($action){
    default:
    include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/home.php';
-   
-   
   }
 ?>
 
