@@ -24,9 +24,9 @@
           ?>
           <form action="login.php" method="post">
           <label for='email'>Email</label><br>
-          <input name="email" id="email" type="text"><br>
+          <input type="email" name="clientEmail" id="email"><br>
           <label for='password'>Password</label><br>
-          <input name="password" id='password' placeholder="Password"><br><br> 
+          <input type="password" name="clientPassword" id="password"><br><br> 
           <button type="submit">Sign in</button><br>
           <a id="c-register" href="/phpmotors/accounts/index.php?action=register-view">Not a member yet?</a><br>
           </form><br>
