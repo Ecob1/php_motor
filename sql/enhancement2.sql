@@ -19,14 +19,6 @@ ON inventory.classificationId = carclassification.classificationId
 WHERE carclassification.carclassificationId = 1;
 
 DELETE
-FROM clients
-WHERE clientFirstname = 'Tony' OR clientLastname = 'Stark';
-
-DELETE
-FROM inventory
-WHERE invMake = 'Jeep' OR invModel = 'Wrangler';
-
-DELETE
 FROM inventory
 WHERE invId = 1;
 

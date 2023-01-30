@@ -15,17 +15,23 @@
       ?>
       <h1>Sign in</h1>
         <div id="container">
-          <form action="login.php" method="post">
+        <?php
+          if (isset($message)) {
+          echo $message;
+          }
+          ?>
+          <form action="/phpmotors/accounts/index.php" method="post" >
           <label for='firstName'>First Name</label><br>
-          <input name="firstName" id="firstName" type="text"><br>
+          <input type="text" name="clientFirstname" id="fname"><br>
           <label for='lastName'>Last Name</label><br>
-          <input name="lastName" id="lastName" type="text"><br>
+          <input type="text" name="clientLastname" id="lname"><br>
           <label for='email'>Email</label><br>
-          <input name="email" id="email" type="text"><br>
+          <input type="email" name="clientEmail" id="email"><br>
           <p>Password must be at leat 8 characters and contain a leat 1 number, 1 capital letter and 1 spacial character</p>
           <label for='password'>Password</label><br>
-          <input name="password" id='password' placeholder="Password"><br><br> 
-          <button type="submit">Sign in</button><br><br>
+          <input type="password" name="clientPassword" id="password"><br><br> 
+          <input type="submit" name="submit" id="regbtn" value="Register"><br><br>
+          <input type="hidden" name="action" value="register">
           </form>
         </div>
       <?php

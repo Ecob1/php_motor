@@ -17,6 +17,11 @@
         
         <h1>Sign in</h1>
         <div id="container">
+        <?php
+          if (isset($message)) {
+          echo $message;
+          }
+          ?>
           <form action="login.php" method="post">
           <label for='email'>Email</label><br>
           <input name="email" id="email" type="text"><br>
