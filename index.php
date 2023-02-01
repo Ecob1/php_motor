@@ -23,6 +23,9 @@ $action = filter_input(INPUT_GET, 'action');
  if ($action == NULL){
   $action = filter_input(INPUT_POST, 'action');
  }
+//  elseif ($invMake = filter_input(INPUT_POST, 'invMake');) {
+//   # code...
+//  }
 
  switch ($action){
    default:

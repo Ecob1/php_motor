@@ -9,25 +9,22 @@
 </head>
 <body>
   <div class="main">
-    <main>      
+    <main>
+      
        <?php
          require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header_nav.php';
         ?>
         
-        <h1>Sign in</h1>
+        <h1>Vehicle Management</h1>
         <div id="container">
-        <?php
-          if (isset($message)) {
-          echo $message;
+            <?php
+            if (isset($message)) {
+            echo $message;
           }
           ?>
           <form action="login.php" method="post">
-          <label for='email'>Email</label><br>
-          <input type="email" name="clientEmail" id="email"><br>
-          <label for='password'>Password</label><br>
-          <input type="password" name="clientPassword" id="password"><br><br> 
-          <button type="submit">Sign in</button><br>
-          <a id="c-register" href="/phpmotors/accounts/index.php?action=register-view">Not a member yet?</a><br>
+            <a id="c-register" href="add-vehicle.php">Add Classification</a><br>
+            <a id="c-register" href="add-classification.php">Add Vehicle</a><br>
           </form><br>
         </div>       
         <?php
