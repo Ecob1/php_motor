@@ -20,7 +20,7 @@
           echo $message;
           }
           ?>
-          <form method="post" action="/phpmotors/vehicle/index.php">
+          <form  action="/phpmotors/vehicle/index.php" method="post">
             <label for='classificationName'>Classificaton Name</label><br>
             <input name="classificationName" id="classificationName" type="text"><br><br>
             <input type="submit" name="submit" id="regbtn" value="Register">

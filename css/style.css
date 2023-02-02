@@ -14,13 +14,10 @@ body{
   padding-bottom: 0px;
   margin: auto; 
   }
-
-  #c-register{
+  .class-name a{
     color: black;
     float: left;
-    margin-right: 70px;
-    margin-top: 30px;
-    
+    text-decoration: underline;
   }
 
 .container{
@@ -55,7 +52,7 @@ li {
 }
 
 a {
-  float: right;
+  float: left;
   margin-right: 60px;
   margin-top: 4px;
 }
@@ -75,6 +72,15 @@ a{
 a:hover {
   background-color: #4c96d7;
 }
+
+#c-register{
+  color: black;
+  float: left;
+  margin-right: 70px;
+  margin-top: 30px;
+}
+
+
 
 /* p{
   margin-left: 20px;    .
@@ -378,7 +384,9 @@ margin-left: 0px;
 
   .first{
     text-align: center;
-  }  
+  } 
+  
+
 
 
 

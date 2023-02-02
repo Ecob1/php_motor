@@ -51,13 +51,52 @@ $action = filter_input(INPUT_GET, 'action');
     exit;
   } else {
     $message = "<p>Sorry $classificationName, but the registration failed. Please try again.</p>";
-    include '../view/registration.php';
+    include '../view/vehicle-man.php';
     exit;
   }
   break;
   case 'classification':
     include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/add-classification.php';
     break;
+
+    case 'add-Vehicle':
+      // Filter and store the data
+        $invMake = filter_input(INPUT_POST, 'invMake');
+        $invModel = filter_input(INPUT_POST, 'invModel');
+        $invDescrption = filter_input(INPUT_POST, 'invDescrption');
+        $invImage = filter_input(INPUT_POST, 'invImage');
+        $invThumbnail = filter_input(INPUT_POST, 'invThumbnail');
+        $invPrice = filter_input(INPUT_POST, 'invPrice');
+        $invStock = filter_input(INPUT_POST, 'invStock');
+        $invColor = filter_input(INPUT_POST, 'invColor');
+        $classificationId = filter_input(INPUT_POST, 'classificationId');
+        echo "line 73";
+      // Check for missing data
+      if(empty($invMake) || empty($invModel) || empty($invDescrption) || empty($invImage) ||empty($invThumbnail) || empty($invPrice) || empty($invStock) || empty($invColor) || empty($classificationId)){
+        $message = '<p>Please provide information for all empty form fields.</p>';
+        include '../view/add-vehicle.php';
+        exit;
+      }
+      echo '81';
+      // Send the data to the model
+      $regOutcome = inventory($invMake, $invModel, $invDescrption, $invImage, $invThumbnail,
+      $invPrice, $invStock, $invColor, $classificationId);
+      echo '84';
+      
+      // Check and report the result
+      if($regOutcome === 1){
+        $message = "<p>Thanks for registering $invModel.</p>";
+        include '../view/add-vehicle.php';
+        exit;
+      } else {
+        $message = "<p>Sorry $invModel, but the registration failed. Please try again.</p>";
+        include '../view/add-vehicle.php';
+        exit;
+      }
+      break;
+      case 'inventory':
+        include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/add-vehicle.php';
+        break;
 default:
 include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/vehicle/index.php';
 }

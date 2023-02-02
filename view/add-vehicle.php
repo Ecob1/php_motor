@@ -16,29 +16,34 @@
          require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header_nav.php';
         ?>
         
-        <h1>Sign in</h1>
+        <h1>Add Vehicle</h1>
         <div id="container">
         <?php
           if (isset($message)) {
           echo $message;
           }
           ?>
-          <form action="login.php" method="post">
-            <label for='make'>Make</label><br>
-            <input type="text" name="make" id="make"><br><br>
-            <label for='model'>Model</label><br>
-            <input type="text" name="model" id="model"><br><br> 
-            <label for='description'>Description </label><br>
-            <input type="text" name="description" id="description"><br><br> 
-            <label for='image_path'>Image Path</label><br>
-            <input type="text" name="image_path" id="image_path"><br><br>
-            <label for='thumbnailPath'>Thumbnail Path</label><br>
-            <input type="text" name="tumbnailPath" id="tumbnailPath"><br><br>
-            <label for='price'>Price</label><br>
-            <input type="digit" name="price" id="price"><br><br> 
-            <label for='inStock'># In Stock</label><br>
-            <input type="text" name="inStock" id="inStock"><br><br> 
-            <button type="submit">Add Vehicle</button><br>
+          <form action="/phpmotors/vehicle/index.php" method="post">
+            <label for='invMake'>Make</label><br>
+            <input type="text" name="invMake" id="invMake"><br><br>
+            <label for='invModel'>Model</label><br>
+            <input type="text" name="invModel" id="invModel"><br><br> 
+            <label for='invDescrption'>Description </label><br>
+            <input type="text" name="invDescrption" id="invDescrption"><br><br> 
+            <label for='invImage'>Image Path</label><br>
+            <input type="text" name="invImage" id="invImage"><br><br>
+            <label for='invThumbnail'>Thumbnail Path</label><br>
+            <input type="text" name="invThumbnail" id="invThumbnail"><br><br>
+            <label for='invPrice'>Price</label><br>
+            <input type="digit" name="invPrice" id="invPrice"><br><br> 
+            <label for='invStock'># In Stock</label><br>
+            <input type="text" name="invStock" id="invStock"><br><br> 
+            <label for='invColor'># Color</label><br>
+            <input type="text" name="invColor" id="invColor"><br><br> 
+            <label for='classificationId'># Classification</label><br>
+            <input type="text" name="classificationId" id="classificationId"><br><br> 
+            <input type="submit" name="submit" id="regbtn" value="Register">
+            <input type="hidden" name="action" value="add-Vehicle">
           </form><br>
         </div>       
         <?php
