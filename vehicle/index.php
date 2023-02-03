@@ -39,11 +39,9 @@ $action = filter_input(INPUT_GET, 'action');
     $message = '<p>Please provide information for all empty form fields.</p>';
     include '../view/add-classification.php';
     exit;
-  }
-  
+  }  
   // Send the data to the model
-  $regOutcome = classification($classificationName);
-  
+  $regOutcome = classification($classificationName);  
   // Check and report the result
   if($regOutcome === 1){
     $message = "<p>Thanks for registering $classificationName.</p>";
@@ -58,7 +56,6 @@ $action = filter_input(INPUT_GET, 'action');
   case 'classification':
     include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/add-classification.php';
     break;
-
     case 'add-Vehicle':
       // Filter and store the data
         $invMake = filter_input(INPUT_POST, 'invMake');
@@ -70,18 +67,15 @@ $action = filter_input(INPUT_GET, 'action');
         $invStock = filter_input(INPUT_POST, 'invStock');
         $invColor = filter_input(INPUT_POST, 'invColor');
         $classificationId = filter_input(INPUT_POST, 'classificationId');
-        echo "line 73";
       // Check for missing data
       if(empty($invMake) || empty($invModel) || empty($invDescrption) || empty($invImage) ||empty($invThumbnail) || empty($invPrice) || empty($invStock) || empty($invColor) || empty($classificationId)){
         $message = '<p>Please provide information for all empty form fields.</p>';
         include '../view/add-vehicle.php';
         exit;
       }
-      echo '81';
       // Send the data to the model
       $regOutcome = inventory($invMake, $invModel, $invDescrption, $invImage, $invThumbnail,
       $invPrice, $invStock, $invColor, $classificationId);
-      echo '84';
       
       // Check and report the result
       if($regOutcome === 1){
@@ -100,12 +94,5 @@ $action = filter_input(INPUT_GET, 'action');
 default:
 include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/vehicle/index.php';
 }
-//  switch ($action){
-//     case 'classification':
-//         $invMake = filter_input(INPUT_POST, 'invMake');
-//         break;
-//    default:
-//    include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/home.php';
-//   }
 ?>
 

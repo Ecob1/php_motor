@@ -3,7 +3,6 @@
 
 // This will handle site registrations
 
-
 function classification($classificationName){
     // Create a connection object using the phpmotors connection function
     $db = phpmotorsConnect();
@@ -51,7 +50,6 @@ function classification($classificationName){
     $stmt->bindValue(':invColor', $invColor, PDO::PARAM_STR);
     $stmt->bindValue(':classificationId', $classificationId, PDO::PARAM_INT);
     // Insert the data
-    echo '4054';
     $stmt->execute();
     // Ask how many rows changed as a result of our insert
     $rowsChanged = $stmt->rowCount();
