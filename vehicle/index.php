@@ -12,7 +12,6 @@ require_once '../model/vehicle-model.php';
 // Get the array of classifications from DB using model
 $classifications = getClassifications();
 
-
 // Build a navigation bar using the $classifications array
 $navList = '<ul>';
 $navList .= "<li><a href='/phpmotors/index.php' title='View the PHP Motors home page'>Home</a></li>";
@@ -20,6 +19,12 @@ foreach ($classifications as $classification) {
  $navList .= "<li><a href='/phpmotors/index.php?action=".urlencode($classification['classificationName'])."' title='View our $classification[classificationName] product line'>$classification[classificationName]</a></li>";
 }
 $navList .= '</ul>';
+
+$selectList = "<select name='classificationId'>";
+  foreach($classifications as $classification){
+    $selectList .= "<option value='$classification[classificationId]'>$classification[classificationName]</option>";
+  }
+$selectList .= "</select>";
 
 $action = filter_input(INPUT_GET, 'action');
  if ($action == NULL){
@@ -53,6 +58,8 @@ $action = filter_input(INPUT_GET, 'action');
     exit;
   }
   break;
+
+
   case 'classification':
     include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/add-classification.php';
     break;

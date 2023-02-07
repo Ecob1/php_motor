@@ -40,10 +40,13 @@
             <input type="text" name="invStock" id="invStock"><br><br> 
             <label for='invColor'># Color</label><br>
             <input type="text" name="invColor" id="invColor"><br><br> 
-            <label for='classificationId'># Classification</label><br>
-            <input type="text" name="classificationId" id="classificationId"><br><br> 
+            <label for='classificationId'># Classification</label><br><br>
+            <?php
+              echo $selectList;
+            ?><br><br> 
             <input type="submit" name="submit" id="regbtn" value="Register">
             <input type="hidden" name="action" value="add-Vehicle">
+           
           </form><br>
         </div>       
         <?php
