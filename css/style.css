@@ -60,6 +60,7 @@ a {
 a.p-count{
   color: black;
   margin-top: 20px;
+  float: right;
 }
 
 a{
@@ -70,7 +71,7 @@ a{
 }
 
 a:hover {
-  background-color: #4c96d7;
+  background-color: lightskyblue
 }
 
 #c-register{
@@ -384,10 +385,11 @@ margin-left: 0px;
 
   .first{
     text-align: center;
-  } 
-  
+  }  
 
-
-
-
- 
+  #class-names a{
+    color: black;
+    margin-left: 0px;
+    text-decoration: underline;
+    margin-left: 30px;
+  }

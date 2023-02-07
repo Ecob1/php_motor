@@ -35,12 +35,13 @@
             <label for='invThumbnail'>Thumbnail Path</label><br>
             <input type="text" name="invThumbnail" id="invThumbnail"><br><br>
             <label for='invPrice'>Price</label><br>
-            <input type="digit" name="invPrice" id="invPrice"><br><br> 
+            <input type="number" name="invPrice" id="invPrice"><br><br> 
             <label for='invStock'># In Stock</label><br>
             <input type="text" name="invStock" id="invStock"><br><br> 
             <label for='invColor'># Color</label><br>
             <input type="text" name="invColor" id="invColor"><br><br> 
             <label for='classificationId'># Classification</label><br><br>
+            <input type="text" name="invclassificationId" id="classificationId"><br><br> 
             <?php
               echo $selectList;
             ?><br><br> 
