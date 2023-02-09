@@ -23,8 +23,8 @@
           }
           ?>
           <form id="class-names" action="login.php" method="post">
-            <a id="first_link" href="add-vehicle.php">Add Classification</a><br><br>
-            <a id="second_link" href="add-classification.php">Add Vehicle</a><br>
+            <a id="first_link" href="/phpmotors/vehicle/index.php?action=classification">Add Classification</a><br><br>
+            <a id="second_link" href="/phpmotors/vehicle/index.php?action=inventory">Add Vehicle</a><br>
           </form><br>
         </div>       
         <?php

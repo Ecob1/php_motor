@@ -20,6 +20,7 @@ foreach ($classifications as $classification) {
 }
 $navList .= '</ul>';
 
+// This is for the dropdown from navigation bar. 
 $selectList = "<select name='classificationId'>";
   foreach($classifications as $classification){
     $selectList .= "<option value='$classification[classificationId]'>$classification[classificationName]</option>";
@@ -50,7 +51,7 @@ $action = filter_input(INPUT_GET, 'action');
   // Check and report the result
   if($regOutcome === 1){
     $message = "<p>Thanks for registering $classificationName.</p>";
-    include '../view/vehicle-man.php';
+    header("Location:/phpmotors/vehicle/");
     exit;
   } else {
     $message = "<p>Sorry $classificationName, but the registration failed. Please try again.</p>";
@@ -87,7 +88,7 @@ $action = filter_input(INPUT_GET, 'action');
       // Check and report the result
       if($regOutcome === 1){
         $message = "<p>Thanks for registering $invModel.</p>";
-        include '../view/add-vehicle.php';
+        header("Location:/phpmotors/vehicle/");
         exit;
       } else {
         $message = "<p>Sorry $invModel, but the registration failed. Please try again.</p>";
@@ -99,7 +100,7 @@ $action = filter_input(INPUT_GET, 'action');
         include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/add-vehicle.php';
         break;
 default:
-include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/vehicle/index.php';
+include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/vehicle-man.php';
 }
 ?>
 
