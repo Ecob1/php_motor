@@ -22,7 +22,8 @@
           ?>
           <form  action="/phpmotors/vehicle/index.php" method="post">
             <label for='classificationName'>Classificaton Name</label><br>
-            <input name="classificationName" id="classificationName" type="text"><br><br>
+            <input type="text"  name="classificationName" id="classificationName" <?php if(isset($classificationName)){
+            echo "value='$classificationName'";} ?> required><br><br>
             <input type="submit" name="submit" id="regbtn" value="Register">
             <input type="hidden" name="action" value="addclassification">
         </form>

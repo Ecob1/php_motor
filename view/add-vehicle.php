@@ -1,5 +1,18 @@
-
-<!DOCTYPE html>
+<?php
+// This is for the dropdown from navigation bar. 
+$selectList = "<select name='classificationId'>";
+$selectList .= "<option>Choose a classification</option>";
+  foreach($classifications as $classification){
+    $selectList .= "<option value='$classification[classificationId]'";
+    if (isset($classificationId)){
+      if($classification['classificationId'] === $classificationId){
+           $selectList .=  ' selected ';
+      }
+    }    
+    $selectList .= ">$classification[classificationName]</option>";
+  }
+$selectList .= "</select>"; 
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,23 +38,33 @@
           ?>
           <form action="/phpmotors/vehicle/index.php" method="post">
             <label for='invMake'>Make</label><br>
-            <input type="text" name="invMake" id="invMake"><br><br>
+            <input type="text" name="invMake" id="invMake" <?php if(isset($invMake)){
+            echo "value='$invMake'";} ?>required><br><br>
             <label for='invModel'>Model</label><br>
-            <input type="text" name="invModel" id="invModel"><br><br> 
-            <label for='invDescrption'>Description </label><br>
-            <input type="text" name="invDescrption" id="invDescrption"><br><br> 
+            <input type="text" name="invModel" id="invModel" <?php if(isset($invModel)){
+            echo "value='$invModel'";} ?> required><br><br> 
+            <label for='invDescription'>Description</label><br>
+            <!-- <input type="text" name="invDescription" id="invDescription" required><br><br>  -->
+            <textarea type="text" name="invDescription" id="invDescription" rows="3" cols="25"  required><?php if(isset($invDescription)){
+            echo $invDescription;} ?></textarea><br><br>
             <label for='invImage'>Image Path</label><br>
-            <input type="text" name="invImage" id="invImage"><br><br>
+            <input type="text" name="invImage" id="invImage" <?php if(isset($invImage)){
+            echo "value='$invImage'";} ?> required><br><br>
             <label for='invThumbnail'>Thumbnail Path</label><br>
-            <input type="text" name="invThumbnail" id="invThumbnail"><br><br>
+            <input type="text" name="invThumbnail" id="invThumbnail" <?php if(isset($invThumbnail)){
+            echo "value='$invThumbnail'";} ?> required><br><br>
             <label for='invPrice'>Price</label><br>
-            <input type="number" name="invPrice" id="invPrice"><br><br> 
+            <input type="number" name="invPrice" id="invPrice" <?php if(isset($invPrice)){
+            echo "value='$invPrice'";} ?> required><br><br> 
             <label for='invStock'># In Stock</label><br>
-            <input type="text" name="invStock" id="invStock"><br><br> 
+            <input type="text" name="invStock" id="invStock" <?php if(isset($invStock)){
+            echo "value='$invStock'";} ?> required><br><br> 
             <label for='invColor'># Color</label><br>
-            <input type="text" name="invColor" id="invColor"><br><br> 
+            <input type="text" name="invColor" id="invColor" <?php if(isset($invColor)){
+            echo "value='$invColor'";} ?> required><br><br> 
             <label for='classificationId'># Classification</label><br><br>
-            <input type="text" name="invclassificationId" id="classificationId"><br><br> 
+            <input type="text" name="invclassificationId" id="classificationId" <?php if(isset($classificationId)){
+            echo "value='$invMclassificationIdake'";} ?> required><br><br> 
             <?php
               echo $selectList;
             ?><br><br> 

@@ -23,10 +23,15 @@
           ?>
           <form action="login.php" method="post">
           <label for='email'>Email</label><br>
-          <input type="email" name="clientEmail" id="email"><br>
+          <input type="email" name="clientEmail" id="email" <?php if(isset($clientEmail)){echo "value='$clientEmail'";} ?> required><br><br>
+
+          <span>Password must be at leat 8 characters and contain a leat 1 number, 1 capital letter and 1 spacial character</span><br><br>
+
           <label for='password'>Password</label><br>
-          <input type="password" name="clientPassword" id="password"><br><br> 
+          <input type="password" name="clientPassword" id="password" required 
+          pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"><br><br> 
           <button type="submit">Sign in</button><br>
+          <input type="hidden" name="action" value="Login">
           <a id="c-register" href="/phpmotors/accounts/index.php?action=register-view">Not a member yet?</a><br>
           </form><br>
         </div>       

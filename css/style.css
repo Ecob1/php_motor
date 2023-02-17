@@ -395,3 +395,13 @@ margin-left: 0px;
     text-decoration: underline;
     margin-left: 30px;
   }
+
+  /* input:required:invalid, input:focus:invalid {
+    /* insert your own styles for invalid form input */
+    /* color: rgb(247, 13, 13); */
+   /* } */
+
+   /* input:required:valid { */
+    /* insert your own styles for valid form input */
+    /* color: rgb(64, 157, 64); */
+   /* } */ 

@@ -8,6 +8,8 @@ require_once '../library/connections.php';
 require_once '../model/main-model.php';
 // Get the accounts model
 require_once '../model/accounts-model.php';
+// Get the functions library
+require_once '../library/functions.php';
 
 // Get the array of classifications from DB using model
 $classifications = getClassifications();
@@ -31,40 +33,51 @@ $action = filter_input(INPUT_GET, 'action');
     
     case 'register':
     // Filter and store the data
-      $clientFirstname = filter_input(INPUT_POST, 'clientFirstname');
-      $clientLastname = filter_input(INPUT_POST, 'clientLastname');
-      $clientEmail = filter_input(INPUT_POST, 'clientEmail');
-      $clientPassword = filter_input(INPUT_POST, 'clientPassword');
+      $clientFirstname = trim(filter_input(INPUT_POST, 'clientFirstname', FILTER_SANITIZE_STRING));
+      $clientLastname = trim(filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_STRING));
+      $clientEmail = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL));
+      $clientEmail = checkEmail($clientEmail);
+      
+      $clientPassword = trim(filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+
+      $checkPassword = checkPassword($clientPassword);
     
-    // Check for missing data
-    if(empty($clientFirstname) || empty($clientLastname) || empty($clientEmail) || empty($clientPassword)){
-      $message = '<p>Please provide information for all empty form fields.</p>';
-      include '../view/registration.php';
-      exit;
-    }
-    
-    // Send the data to the model
-    $regOutcome = regClient($clientFirstname, $clientLastname, $clientEmail, $clientPassword);
-    
-    // Check and report the result
-    if($regOutcome === 1){
-      $message = "<p>Thanks for registering $clientFirstname. Please use your email and password to login.</p>";
-      include '../view/login.php';
-      exit;
-    } else {
-      $message = "<p>Sorry $clientFirstname, but the registration failed. Please try again.</p>";
-      include '../view/registration.php';
-      exit;
-    }
-    break;
-    case 'login-view':    
-        include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/login.php';
-        break; 
-        case 'register-view':
-            include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/registration.php';
-            break;
-        default:
-        include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/home.php';  
+      // Check for missing data
+      if(empty($clientFirstname) || empty($clientLastname) || empty($clientEmail) || empty($checkPassword)){
+        $message = '<p>Please provide information for all empty form fields.</p>';
+        include '../view/registration.php';
+        exit;
+      }
+
+      // Hash the checked password
+      $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);
+      
+      // Send the data to the model
+      $regOutcome = regClient($clientFirstname, $clientLastname, $clientEmail, $hashedPassword);
+      
+      // Check and report the result
+      if($regOutcome === 1){
+        $message = "<p>Thanks for registering $clientFirstname. Please use your email and password to login.</p>";
+        include '../view/login.php';
+        exit;
+      } else {
+        $message = "<p>Sorry $clientFirstname, but the registration failed. Please try again.</p>";
+        include '../view/registration.php';
+        exit;
+      }
+      break;
+      case 'login-view':    
+          include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/login.php';
+          break; 
+          case 'register-view':
+              include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/registration.php';
+              break;
+
+          case 'Login':
+          
+              break;
+          default:
+          include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/home.php';  
     }
 
 //  switch ($action){
