@@ -45,7 +45,7 @@ $selectList .= "</select>";
             echo "value='$invModel'";} ?> required><br><br> 
             <label for='invDescription'>Description</label><br>
             <!-- <input type="text" name="invDescription" id="invDescription" required><br><br>  -->
-            <textarea type="text" name="invDescription" id="invDescription" rows="3" cols="25"  required><?php if(isset($invDescription)){
+            <textarea type="text" name="invDescription" id="invDescription" rows="3" cols="25" maxlength="30" placeholder="Alowed 30 characters only " required><?php if(isset($invDescription)){
             echo $invDescription;} ?></textarea><br><br>
             <label for='invImage'>Image Path</label><br>
             <input type="text" name="invImage" id="invImage" <?php if(isset($invImage)){
