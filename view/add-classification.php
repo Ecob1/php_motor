@@ -22,7 +22,7 @@
           ?>
           <form  action="/phpmotors/vehicle/index.php" method="post">
             <label for='classificationName'>Classificaton Name</label><br>
-            <input type="text"  name="classificationName" id="classificationName" <?php if(isset($classificationName)){
+            <input type="text"  name="classificationName" id="classificationName"  placeholder="Allowed only up to 30 characters" maxlength="30" <?php if(isset($classificationName)){
             echo "value='$classificationName'";} ?> required><br><br>
             <input type="submit" name="submit" id="regbtn" value="Register">
             <input type="hidden" name="action" value="addclassification">

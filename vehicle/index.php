@@ -74,9 +74,7 @@ $action = filter_input(INPUT_GET, 'action');
     break;
     case 'add-Vehicle':
       // Filter and store the data
-        $invMake = trim(filter_input(INPUT_POST, 'invMake', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
-      
-        
+        $invMake = trim(filter_input(INPUT_POST, 'invMake', FILTER_SANITIZE_FULL_SPECIAL_CHARS));      
       
 
         $invModel = trim(filter_input(INPUT_POST, 'invModel', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
