@@ -11,7 +11,7 @@
  <?php
  require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header_nav.php';
 ?>
-<main>    
+<main>   
   <div class="container">    
     <img class="ownToday" src="/phpmotors/images/site/own_today.png" alt="text_image">               
     <img class="delorean" src="/phpmotors/images/delorean.jpg" alt="car">

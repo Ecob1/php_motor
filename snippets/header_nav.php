@@ -1,5 +1,8 @@
 <header class="header">
 <img class="logo" src="/phpmotors/images/site/logo.png" alt="logos"> 
+<?php if(isset($cookieFirstname)){
+ echo "<span id='cookie'>Welcome $cookieFirstname</span>";
+} ?>
 <a class="p-count" href="/phpmotors/accounts/index.php/?action=login-view">My Account</a>
 </header>
 <nav class="nav">

@@ -12,8 +12,7 @@
     <main>      
        <?php
          require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header_nav.php';
-        ?>
-        
+        ?>        
         <h1>Sign in</h1>
         <div id="container">
         <?php
@@ -21,7 +20,7 @@
           echo $message;
           }
           ?>
-          <form action="login.php" method="post">
+          <form action="/phpmotors/accounts/" method="post">
           <label for='email'>Email</label><br>
           <input type="email" name="clientEmail" id="email" <?php if(isset($clientEmail)){echo "value='$clientEmail'";} ?> required><br><br>
 
@@ -31,7 +30,7 @@
           <input type="password" name="clientPassword" id="password" required 
           pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"><br><br> 
           <button type="submit">Sign in</button><br>
-          <input type="hidden" name="action" value="Login">
+          <input type="hidden" name="action" value="login">
           <a id="c-register" href="/phpmotors/accounts/index.php?action=register-view">Not a member yet?</a><br>
           </form><br>
         </div>       
