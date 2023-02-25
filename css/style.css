@@ -375,6 +375,13 @@ margin-left: 0px;
       width: 100%;
       height: auto;
     }
+   
+    #nav-name{
+      display:inline;
+      position: absolute;
+      margin-right: 600px;
+      margin-top: 20px;
+    }
 
     footer{
         font-size: 17px; 
@@ -400,12 +407,23 @@ margin-left: 0px;
   margin-left: 160px;
   }
 
-  /* input:required:invalid, input:focus:invalid {
-    /* insert your own styles for invalid form input */
-    /* color: rgb(247, 13, 13); */
-   /* } */
+  /* #loginNmes{
+    
+  } */
 
-   /* input:required:valid { */
-    /* insert your own styles for valid form input */
-    /* color: rgb(64, 157, 64); */
-   /* } */ 
+  #login-p{
+    margin-left: 20px;
+  }
+
+  #nav-name{
+    /* display:inline; */
+    position: absolute;
+    margin-left: 780px;
+    margin-top: -89px;
+  }
+
+  #nav-name a{
+
+    color: #000000;
+  }
+

@@ -12,7 +12,7 @@ function checkPassword($clientPassword){
     return preg_match($pattern, $clientPassword);
    }
 
-   // this is a function for the nav bar.
+// this is a function for the nav bar.
 function CreatingNav($classifications){
 
     // Build a navigation bar using the $classifications array

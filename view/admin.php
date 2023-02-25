@@ -11,14 +11,17 @@
 <body>
   <div class="main">
     <main>
-        <?php
-        require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header_nav.php';
-        ?>      
-          <h1>ADMIN</h1>
-          <p>Your are logged in.</p>
-          <div class="error">
-            <p>first name: </p>
-            
+    <?php
+         require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header_nav.php';
+        ?>            
+          <h1><?php echo $_SESSION['clientData']['clientFirstname'];?> <?php echo $_SESSION['clientData']['clientLastname'];?></h1>
+          <p id='login-p'>Your are logged in.</p>
+          <div class='loginNames'>
+            <ul>
+              <li>First name: <?php echo $_SESSION['clientData']['clientFirstname'];?></li>
+              <li>Last name: <?php echo $_SESSION['clientData']['clientLastname'];?></li>
+              <li>Email: <?php echo $_SESSION['clientData']['clientEmail'];?></li>
+            </ul>                      
           </div>
           
             <?php
