@@ -1,4 +1,5 @@
 <?php
+session_start();
 //This is the main controller
 
 // This is the account controller

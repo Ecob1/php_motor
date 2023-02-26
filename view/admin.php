@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<?php 
+  if(!$_SESSION['loggedin']){
+ //   href="/phpmotors/accounts/index.php";
+      header('Location:/phpmotors/index.php');
+  }
+?><!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,9 +27,11 @@
               <li>Last name: <?php echo $_SESSION['clientData']['clientLastname'];?></li>
               <li>Email: <?php echo $_SESSION['clientData']['clientEmail'];?></li>
             </ul>                      
-          </div>
-          
-            <?php
+          </div>   
+        <?php if($_SESSION['clientData']['clientLevel'] > 1):?> 
+          <p><a href="/phpmotors/vehicle/">Vehicle page</a></p> 
+        <?php endif ?>
+        <?php          
           require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';
         ?>
     </main>

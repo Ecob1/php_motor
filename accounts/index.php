@@ -33,10 +33,10 @@ if(isset($_COOKIE['firstname'])){
       $clientFirstname = trim(filter_input(INPUT_POST, 'clientFirstname', FILTER_SANITIZE_STRING));
       $clientLastname = trim(filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_STRING));
       $clientEmail = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL));
-      $clientPassword = trim(filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+      $clientPassword = trim(filter_input(INPUT_POST, 'clientPassword',FILTER_SANITIZE_FULL_SPECIAL_CHARS));
       $clientEmail = checkEmail($clientEmail);
       // Check for email
-      $matchEmail = checkExistingEmail($clientEmail);
+      $existingEmail = checkExistingEmail($clientEmail);
        // Dealing with email during during registration
        if ($existingEmail){
         $message = '<p class="notice">The email already exists. Do you want to login instead</p>';
@@ -68,12 +68,12 @@ if(isset($_COOKIE['firstname'])){
       break;
       // login and password validation
       case 'login':
-        $clientEmail = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL));
-        // $clientEmail = checkEmail($clientEmail);
-        $clientPassword = trim(filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
-
+        $clientEmail = filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL);
+        $clientEmail = checkEmail($clientEmail);
+        $clientPassword = filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $passwordCheck = checkPassword($clientPassword);
         // Run basic checks, return if errors
-        if (empty($clientEmail) || empty($clientPassword)) {
+        if (empty($clientEmail) || empty($passwordCheck)) {
         $message = '<p class="notice">Please provide a valid email address and password.</p>';
         include '../view/login.php';
         exit;
@@ -81,6 +81,7 @@ if(isset($_COOKIE['firstname'])){
         // A valid password exists, proceed with the login process
         // Query the client data based on the email address
         $clientData = getClient($clientEmail);
+        
         // Compare the password just submitted against
         // the hashed password for the matching client
         $hashCheck = password_verify($clientPassword, $clientData['clientPassword']);
@@ -103,16 +104,23 @@ if(isset($_COOKIE['firstname'])){
         include '../view/admin.php';
         exit;     
         break;
-        case 'login-view':  
-            include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/login.php';  
-            break; 
+      case 'login-view':  
+          include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/login.php';  
+          break; 
+      case 'register-view':
+          include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/registration.php';
+          break;
+      case 'Logout':
+        // We need to empty the assesion array
+        $_SESSION = array();
+        // Destroy the session
+        session_destroy();
+        // Go back to the main page
+        header('Location:/phpmotors/');
+        break;
 
-            case 'register-view':
-                include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/registration.php';
-                break;
-
-            default:
-            include '../view/admin.php';
-            // include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/home.php';  
-    }
+      default:
+        include '../view/admin.php';
+      // include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/home.php';  
+}
 ?>
