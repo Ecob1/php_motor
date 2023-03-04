@@ -132,7 +132,7 @@ if(isset($_COOKIE['firstname'])){
 
         break;
 
-      case 'update-user-info':
+      case 'client-update':
         $firstName = trim(filter_input(INPUT_POST, 'firstName', FILTER_SANITIZE_STRING));
         $lastName = trim(filter_input(INPUT_POST, 'lastName', FILTER_SANITIZE_STRING));
         $clientEmail = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL));
