@@ -1,5 +1,5 @@
+<hr>
 <footer class="footer">
-  <hr>
   <div class="first"><p>&copy; PHP Motor, All right reserved".</p>
   </div>
   <div class="first">

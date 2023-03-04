@@ -12,6 +12,11 @@ $selectList .= "<option>Choose a classification</option>";
     $selectList .= ">$classification[classificationName]</option>";
   }
 $selectList .= "</select>"; 
+?><?php
+if ($_SESSION['clientData']['clientLevel'] < 2) {
+ header('location: /phpmotors/');
+ exit;
+}
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,8 +68,8 @@ $selectList .= "</select>";
             <input type="text" name="invColor" id="invColor" <?php if(isset($invColor)){
             echo "value='$invColor'";} ?> required><br><br> 
             <label for='classificationId'># Classification</label><br><br>
-            <input type="text" name="invclassificationId" id="classificationId" <?php if(isset($classificationId)){
-            echo "value='$invMclassificationIdake'";} ?> required><br><br> 
+            <input type="text" name="classificationId" id="classificationId" <?php if(isset($classificationId)){
+            echo "value='$classificationId'";} ?> required><br><br> 
             <?php
               echo $selectList;
             ?><br><br> 

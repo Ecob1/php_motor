@@ -17,7 +17,7 @@ $navList = CreatingNav($classifications);
 
 // Build a navigation bar using the $classifications array
 
-$navList .= '</ul>';
+// $navList .= '</ul>';
 
 $action = filter_input(INPUT_GET, 'action');
  if ($action == NULL){
