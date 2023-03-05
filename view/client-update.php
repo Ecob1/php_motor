@@ -3,7 +3,6 @@
  //   href="/phpmotors/accounts/index.php";
       header('Location:/phpmotors/index.php');
   }
-?>
 ?><!DOCTYPE html> 
 <html lang="en">
 <head>
@@ -27,15 +26,16 @@
         <div id="container">
           <form action="/phpmotors/accounts/index.php" method="post" >
           <label for='firstName'>First Name</label><br>
-          <input type="text" name="firstName" id="firstName" required <?php if(isset($firstName)){ echo "value='$firstName'"; } elseif(isset($invInfo['firstName'])) {echo "value='$invInfo[firstName]'"; }?>><br>
+          <input type="text" name="firstName" id="firstName" required <?php if(isset($clientFirstname)){ echo "value='$clientFirstname'"; } elseif(isset($_SESSION['clientData']['clientFirstname'])) {echo "value='".$_SESSION['clientData']['clientFirstname']."'"; }?>><br>
 
           <label for='lastName'>Last Name</label><br>
-          <input type="text" name="lastName" id="lastName" required <?php if(isset($lastName)){ echo "value='$lastName'"; } elseif(isset($invInfo['lastName'])) {echo "value='$invInfo[lastName]'"; }?>><br>
+          <input type="text" name="lastName" id="lastName" required <?php if(isset($clientLastname)){ echo "value='$clientLastname'"; } elseif(isset($_SESSION['clientData']['clientLastname'])) {echo "value='".$_SESSION['clientData']['clientLastname']."'"; }?>><br>
             
           <label for='clientEmail'>Email</label><br>
-          <input type="email" name="clientEmail" id="clientEmail" placeholder="Enter a valid email address" required <?php if(isset($email)){ echo "value='$email'"; } elseif(isset($invInfo['lastemailName'])) {echo "value='$invInfo[email]'"; }?>><br><br>
+          <input type="email" name="clientEmail" id="clientEmail" placeholder="Enter a valid email address" required <?php if(isset($clientEmail)){ echo "value='$clientEmail'"; } elseif(isset($_SESSION['clientData']['clientEmail'])) {echo "value='".$_SESSION['clientData']['clientEmail']."'"; }?>><br><br>
+
           <input type="submit" class="regbtn" name="submit" value="update user info">           
-          <input type="hidden" name="action" value="update-user-info">
+          <input type="hidden" name="action" value="client-updates">
           <input type="hidden" name="invId" value="<?php if(isset($invInfo['invId'])){ echo $invInfo['invId'];} elseif(isset($invId)){ echo $invId; } ?>"><br><br> 
           <span>Password must be at leat 8 characters and contain a leat 1 number, 1 capital letter and 1 spacial character</span><br>
           <label for='password'>Password</label><br>

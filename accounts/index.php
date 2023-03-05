@@ -110,9 +110,11 @@ if(isset($_COOKIE['firstname'])){
     case 'login-view':  
         include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/login.php';  
         break; 
+        
     case 'register-view':
         include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/registration.php';
         break;
+
     case 'Logout':
       // We need to empty the ssesion array
       $_SESSION = array();
@@ -122,17 +124,16 @@ if(isset($_COOKIE['firstname'])){
       header('Location:/phpmotors/');
       break; 
       
-      case 'accountUpdate':
-        include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/client-update.php';
-
-        break;
+      // case 'accountUpdate':
+      //   include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/client-update.php';
+      // break;
 
       case 'update-user':
         include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/client-update.php';
 
         break;
 
-      case 'client-update':
+      case 'client-updates':
         $firstName = trim(filter_input(INPUT_POST, 'firstName', FILTER_SANITIZE_STRING));
         $lastName = trim(filter_input(INPUT_POST, 'lastName', FILTER_SANITIZE_STRING));
         $clientEmail = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL));
