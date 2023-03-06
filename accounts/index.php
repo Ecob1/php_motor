@@ -83,7 +83,8 @@ if(isset($_COOKIE['firstname'])){
       // A valid password exists, proceed with the login process
       // Query the client data based on the email address
       $clientData = getClient($clientEmail);
-      
+      echo  $clientData;
+      break;
       // Compare the password just submitted against
       // the hashed password for the matching client
       $hashCheck = password_verify($clientPassword, $clientData['clientPassword']);
@@ -112,7 +113,7 @@ if(isset($_COOKIE['firstname'])){
         break; 
         
     case 'register-view':
-        include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/registration.php';
+        include $_SERVER['DOddCUMENT_ROOT'].'/phpmotors/view/registration.php';
         break;
 
     case 'Logout':
@@ -123,60 +124,53 @@ if(isset($_COOKIE['firstname'])){
       // Go back to the main page
       header('Location:/phpmotors/');
       break; 
-      
-      // case 'accountUpdate':
-      //   include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/client-update.php';
-      // break;
 
+      // User updateing from client-update view file.
       case 'update-user':
         include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/client-update.php';
-
         break;
 
+      // To change or update the users information.
       case 'client-updates':
-        $firstName = trim(filter_input(INPUT_POST, 'firstName', FILTER_SANITIZE_STRING));
-        $lastName = trim(filter_input(INPUT_POST, 'lastName', FILTER_SANITIZE_STRING));
-        $clientEmail = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL));
-        $clientPassword = trim(filter_input(INPUT_POST, 'clientPassword',FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+        $clientFirstname = trim(filter_input(INPUT_POST, 'clientFirstname', FILTER_SANITIZE_STRING));
+        $clientLastname = trim(filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_STRING));
+        $clientEmail = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL));        
+        $clientId = trim(filter_input(INPUT_POST, 'clientId', FILTER_SANITIZE_NUMBER_INT));
         $clientEmail = checkEmail($clientEmail);
         // Check for email
-        $existingEmail = checkExistingEmail($clientEmail);
-        // Dealing with email during during registration
-        if ($existingEmail){
-          $message = '<p class="notice">The email already exists. Do you want to login instead</p>';
-          include '../view/login.php';
-          exit;
-        }
-        // Check for missing data
-        $checkPassword = checkPassword($clientPassword);
-        if(empty($firstName) || empty($lastName) || empty($clientEmail) || empty($checkPassword)){
-          $message = '<p>Please provide information for all empty form fields.</p>';
-          include '../view/admin.php';
-          exit;
-        }
-
-        $updateResults = updateUser( $firstName, $lastName, $clientEmail, $clientPassword, $invId);
+        if($clientEmail != $_SESSION['clientData']['clientEmail']){ 
+          $existingEmail = checkExistingEmail($clientEmail);
+          // Dealing with email during during registration
+          if ($existingEmail){
+            $message = '<p class="notice">The email already exists. Do you want to login instead</p>';
+            include '../view/client-update.php';
+            exit;
+          }
+       }
+        $updateResults = updateUser( $clientFirstname, $clientLastname, $clientEmail);
     
         if ($updateResults) {
           $message = "<p>Congratulations, the new information was successfully updated.</p>";
           // include '../view/vehicle-update.php';
           $_SESSION['message'] = $message;
-          echo 'This is not a repetion';
-          header('location: /phpmotors/accounts/');
-          exit;
         } else {
           $message = "<p>Error. The new vehicle could not be updated at this time. Please try again later</p>";
-          include '../view/update-user-info.php';
+          include '../view/client-update.php';
           exit;
         }
-        // Hash the checked password
-        $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);      
+
+        $clientData = getClient($clientId);
+        $_SESSION['clientData']= $clientData;
+        header('location:/phpmotor/accounts/index.php');
+        exit;
+        break;
+          
         // Send the data to the model
-        $regOutcome = regClient($clientFirstname, $clientLastname, $clientEmail, $hashedPassword);      
+        $regOutcome = regClient($clientFirstname, $clientLastname, $clientEmail);      
         // Check and report the result
         if($regOutcome === 1){
-          setcookie('firstname', $firstname, strtotime('+1 year'), '/');
-          $message = "<p>Thanks for registering $firstname. Please use your email and password to login.</p>";
+          setcookie('clientFirstname', $clientFirstname, strtotime('+1 year'), '/');
+          $message = "<p>Thanks for registering $clientFirstname. Please use your email and password to login.</p>";
           include '../view/login.php';
           exit;
         } else {
@@ -186,6 +180,29 @@ if(isset($_COOKIE['firstname'])){
         }
         break;
 
+
+      
+      case 'user-password':
+        $clientPassword = trim(filter_input(INPUT_POST, 'clientPassword',FILTER_SANITIZE_FULL_SPECIAL_CHARS));                
+        $clientId = trim(filter_input(INPUT_POST, 'clientId', FILTER_SANITIZE_NUMBER_INT));
+         // Check for missing data
+         $checkPassword = checkPassword($clientPassword);
+         if(empty($checkPassword)){
+           $message = '<p>Please provide information for all empty form fields.</p>';
+           include '../view/client-update.php';
+           exit;
+         }
+          // Hash the checked password
+        $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);      
+        // Send the data to the model
+        $regOutcome = updatePassword($hashedPassword);      
+        // Check and report the result
+        if($regOutcome === 1){
+         $_SESSION['message'] = "<p>Thanks for registering $clientFirstname. Please use your email and password to login.</p>";
+          header('location: /phpmotor/accounts/');
+          exit;
+        } 
+        break;
       default:
       $classificationList = buildClassificationList($classifications);
         include '../view/admin.php';

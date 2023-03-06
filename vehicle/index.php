@@ -56,6 +56,7 @@ case 'addclassification':
 case 'classification':
   include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/add-classification.php';
   break;
+
 case 'add-Vehicle':
   // Filter and store the data
     $invMake = trim(filter_input(INPUT_POST, 'invMake', FILTER_SANITIZE_FULL_SPECIAL_CHARS)); 
@@ -88,6 +89,7 @@ case 'add-Vehicle':
     exit;
   }
   break;
+  
 case 'inventory':
   include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/add-vehicle.php';
   break;
