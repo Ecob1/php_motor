@@ -83,8 +83,7 @@ if(isset($_COOKIE['firstname'])){
       // A valid password exists, proceed with the login process
       // Query the client data based on the email address
       $clientData = getClient($clientEmail);
-      echo  $clientData;
-      break;
+
       // Compare the password just submitted against
       // the hashed password for the matching client
       $hashCheck = password_verify($clientPassword, $clientData['clientPassword']);
@@ -132,8 +131,8 @@ if(isset($_COOKIE['firstname'])){
 
       // To change or update the users information.
       case 'client-updates':
-        $clientFirstname = trim(filter_input(INPUT_POST, 'clientFirstname', FILTER_SANITIZE_STRING));
-        $clientLastname = trim(filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_STRING));
+        $clientFirstname = trim(filter_input(INPUT_POST, 'firstName', FILTER_SANITIZE_STRING));
+        $clientLastname = trim(filter_input(INPUT_POST, 'lastName', FILTER_SANITIZE_STRING));
         $clientEmail = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL));        
         $clientId = trim(filter_input(INPUT_POST, 'clientId', FILTER_SANITIZE_NUMBER_INT));
         $clientEmail = checkEmail($clientEmail);
@@ -147,10 +146,10 @@ if(isset($_COOKIE['firstname'])){
             exit;
           }
        }
-        $updateResults = updateUser( $clientFirstname, $clientLastname, $clientEmail);
+        $updateResults = updateUser($clientFirstname, $clientLastname, $clientEmail, $clientId);
     
         if ($updateResults) {
-          $message = "<p>Congratulations, the new information was successfully updated.</p>";
+          $message = "<p>".$_SESSION['clientData']['clientFirstname']." The new information was successfully updated.</p>";
           // include '../view/vehicle-update.php';
           $_SESSION['message'] = $message;
         } else {
@@ -159,9 +158,9 @@ if(isset($_COOKIE['firstname'])){
           exit;
         }
 
-        $clientData = getClient($clientId);
+        $clientData = getClient($clientEmail);
         $_SESSION['clientData']= $clientData;
-        header('location:/phpmotor/accounts/index.php');
+        header('location:/phpmotors/accounts/index.php');
         exit;
         break;
           
@@ -195,11 +194,11 @@ if(isset($_COOKIE['firstname'])){
           // Hash the checked password
         $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);      
         // Send the data to the model
-        $regOutcome = updatePassword($hashedPassword);      
+        $regOutcome = updatePassword($hashedPassword, $clientId);      
         // Check and report the result
         if($regOutcome === 1){
-         $_SESSION['message'] = "<p>Thanks for registering $clientFirstname. Please use your email and password to login.</p>";
-          header('location: /phpmotor/accounts/');
+         $_SESSION['message'] = "<p>Your password has been change. ".$_SESSION['clientData']['clientFirstname']." Please use your email and password to login.</p>";
+          header('location: /phpmotors/accounts/');
           exit;
         } 
         break;

@@ -47,11 +47,11 @@ function checkExistingEmail($clientEmail) {
 
 
    // Get client data based on an email address
-function getClient($clientId){
+function getClient($clientEmail){
     $db = phpmotorsConnect();
-    $sql = 'SELECT clientId, clientFirstname, clientLastname, clientEmail, clientLevel, clientPassword FROM clients WHERE clientId = :clientId';
+    $sql = 'SELECT clientId, clientFirstname, clientLastname, clientEmail, clientLevel, clientPassword FROM clients WHERE clientEmail = :clientEmail';
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':clientId', $clientId, PDO::PARAM_INT);
+    $stmt->bindValue(':clientEmail', $clientEmail, PDO::PARAM_STR);
     $stmt->execute();
     $clientData = $stmt->fetch(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
@@ -59,7 +59,7 @@ function getClient($clientId){
    }
 
 // The function will update a vehicle    
-function updateUser($firstName, $lastName, $clientEmail, $clientId){
+function updateUser($clientFirstname, $clientLastname, $clientEmail, $clientId){
     // Create a connection object using the phpmotors connection function
     $db = phpmotorsConnect();
     // The SQL statement

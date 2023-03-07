@@ -33,14 +33,13 @@ if ($_SESSION['clientData']['clientLevel'] < 2) {
        <?php
          require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header_nav.php';
         ?>
+
+        <?php
+          if (isset($message)) {echo $message;}
+        ?>
         
         <h1>Add Vehicle</h1>
         <div id="container">
-        <?php
-          if (isset($message)) {
-          echo $message;
-          }
-          ?>
           <form action="/phpmotors/vehicle/index.php" method="post">
             <label for='invMake'>Make</label><br>
             <input type="text" name="invMake" id="invMake" <?php if(isset($invMake)){

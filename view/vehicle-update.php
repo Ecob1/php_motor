@@ -48,9 +48,7 @@ $classifList .= '</select>';
 	            echo "Modify$invMake $invModel"; }?></h1>
         <div id="container">
         <?php
-          if (isset($message)) {
-          echo $message;
-          }
+          if (isset($message)) {echo $message;}
           ?>
           <form action="/phpmotors/vehicle/index.php" method="post">
             <label for='invMake'>Make</label><br>

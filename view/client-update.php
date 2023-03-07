@@ -19,7 +19,10 @@
         <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header_nav.php'; ?>            
         <h1><?php echo $_SESSION['clientData']['clientFirstname'];?> <?php echo $_SESSION['clientData']['clientLastname'];?></h1>
 
-        <?php if(isset($message)){ echo $message;} ?>
+        <?php if (isset($_SESSION['message'])) {
+            echo $_SESSION['message'];
+            unset($_SESSION['message']);
+          }?>
         <h1>Manage Account</h1>
         <p id='login-p'>Update account</p>
         <div id="container">

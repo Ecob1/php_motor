@@ -14,11 +14,15 @@
     <title>Document</title>
 </head>
 <body>
-  <div class="main">
+  <div id="container" class="main">
     <main>
     <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header_nav.php'; ?>            
           <h1><?php echo $_SESSION['clientData']['clientFirstname'];?> <?php echo $_SESSION['clientData']['clientLastname'];?></h1>
           <p id='login-p'>Your are logged in.</p>
+          <?php if (isset($_SESSION['message'])) {
+            echo $_SESSION['message'];
+            unset($_SESSION['message']);
+          } ?>
           <div class='loginNames'>
             <ul>
               <li>First name: <?php echo $_SESSION['clientData']['clientFirstname'];?></li>
