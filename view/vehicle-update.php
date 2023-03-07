@@ -3,7 +3,6 @@ if ($_SESSION['clientData']['clientLevel'] < 2) {
  header('location: /phpmotors/');
  exit;
 }
-
 // Build the classifications option list
 $classifList = '<select name="classificationId" id="classificationId">';
 $classifList .= "<option>Choose a Car Classification</option>";
@@ -93,6 +92,5 @@ $classifList .= '</select>';
         ?>
     </main>
   </div>
-
 </body>
 </html>

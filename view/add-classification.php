@@ -41,15 +41,3 @@ if ($_SESSION['clientData']['clientLevel'] < 2) {
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

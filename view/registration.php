@@ -35,7 +35,7 @@
           <input type="password" name="clientPassword" id="password" required
           pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"><br><br> 
           <input type="submit" name="submit" id="regbtn" value="Register"><br><br>
-          <input type="hidden" name="action" value="register">
+          <input type="hidden" name="action" value="register"> 
           </form>
         </div>
       <?php
@@ -43,18 +43,5 @@
       ?>
     </main>
   </div>
-
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

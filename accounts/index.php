@@ -29,43 +29,43 @@ if(isset($_COOKIE['firstname'])){
  switch ($action) {
     // Code to deliver the views will be here
     case 'register':
-    // Filter and store the data
-      $clientFirstname = trim(filter_input(INPUT_POST, 'clientFirstname', FILTER_SANITIZE_STRING));
-      $clientLastname = trim(filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_STRING));
-      $clientEmail = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL));
-      $clientPassword = trim(filter_input(INPUT_POST, 'clientPassword',FILTER_SANITIZE_FULL_SPECIAL_CHARS));
-      $clientEmail = checkEmail($clientEmail);
-      // Check for email
-      $existingEmail = checkExistingEmail($clientEmail);
-       // Dealing with email during during registration
-       if ($existingEmail){
-        $message = '<p class="notice">The email already exists. Do you want to login instead</p>';
-        include '../view/login.php';
-        exit;
-      }
-       // Check for missing data
-       $checkPassword = checkPassword($clientPassword);
-       if(empty($clientFirstname) || empty($clientLastname) || empty($clientEmail) || empty($checkPassword)){
-        $message = '<p>Please provide information for all empty form fields.</p>';
-        include '../view/registration.php';
-        exit;
-      }
-      // Hash the checked password
-      $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);      
-      // Send the data to the model
-      $regOutcome = regClient($clientFirstname, $clientLastname, $clientEmail, $hashedPassword);      
-      // Check and report the result
-      if($regOutcome === 1){
-        setcookie('firstname', $clientFirstname, strtotime('+1 year'), '/');
-        $message = "<p>Thanks for registering $clientFirstname. Please use your email and password to login.</p>";
-        include '../view/login.php';
-        exit;
-      } else {
-        $message = "<p>Sorry $clientFirstname, but the registration failed. Please try again.</p>";
-        include '../view/registration.php';
-        exit;
-      }
-      break;
+      // Filter and store the data
+        $clientFirstname = trim(filter_input(INPUT_POST, 'clientFirstname', FILTER_SANITIZE_STRING));
+        $clientLastname = trim(filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_STRING));
+        $clientEmail = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL));
+        $clientPassword = trim(filter_input(INPUT_POST, 'clientPassword',FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+        $clientEmail = checkEmail($clientEmail);
+        // Check for email
+        $existingEmail = checkExistingEmail($clientEmail);
+         // Dealing with email during during registration
+         if ($existingEmail){
+          $message = '<p class="notice">The email already exists. Do you want to login instead</p>';
+          include '../view/login.php';
+          exit;
+        }
+         // Check for missing data
+         $checkPassword = checkPassword($clientPassword);
+         if(empty($clientFirstname) || empty($clientLastname) || empty($clientEmail) || empty($checkPassword)){
+          $message = '<p>Please provide information for all empty form fields.</p>';
+          include '../view/registration.php';
+          exit;
+        }
+        // Hash the checked password
+        $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);      
+        // Send the data to the model
+        $regOutcome = regClient($clientFirstname, $clientLastname, $clientEmail, $hashedPassword);      
+        // Check and report the result
+        if($regOutcome === 1){
+          setcookie('firstname', $clientFirstname, strtotime('+1 year'), '/');
+          $message = "<p>Thanks for registering $clientFirstname. Please use your email and password to login.</p>";
+          include '../view/login.php';
+          exit;
+        } else {
+          $message = "<p>Sorry $clientFirstname, but the registration failed. Please try again.</p>";
+          include '../view/registration.php';
+          exit;
+        }
+        break;
 
 
       // login and password validation
@@ -139,6 +139,8 @@ if(isset($_COOKIE['firstname'])){
         // Check for email
         if($clientEmail != $_SESSION['clientData']['clientEmail']){ 
           $existingEmail = checkExistingEmail($clientEmail);
+          echo $clientEmail;
+          exit;
           // Dealing with email during during registration
           if ($existingEmail){
             $message = '<p class="notice">The email already exists. Do you want to login instead</p>';
@@ -148,14 +150,15 @@ if(isset($_COOKIE['firstname'])){
        }
         $updateResults = updateUser($clientFirstname, $clientLastname, $clientEmail, $clientId);
     
-        if ($updateResults) {
-          $message = "<p>".$_SESSION['clientData']['clientFirstname']." The new information was successfully updated.</p>";
+        if (!$updateResults){
+          $message = "<p>Need to provide information for all empty spaces</p>";
+          include '../view/client-update.php';
+          exit;          
+        } else {
+          $message = "<p>Congratulations, the new information was successfully updated.</p>";
           // include '../view/vehicle-update.php';
           $_SESSION['message'] = $message;
-        } else {
-          $message = "<p>Error. The new vehicle could not be updated at this time. Please try again later</p>";
-          include '../view/client-update.php';
-          exit;
+          
         }
 
         $clientData = getClient($clientEmail);
@@ -197,7 +200,7 @@ if(isset($_COOKIE['firstname'])){
         $regOutcome = updatePassword($hashedPassword, $clientId);      
         // Check and report the result
         if($regOutcome === 1){
-         $_SESSION['message'] = "<p>Your password has been change. ".$_SESSION['clientData']['clientFirstname']." Please use your email and password to login.</p>";
+         $_SESSION['message'] = "<p>Your password has been updated.</p>";
           header('location: /phpmotors/accounts/');
           exit;
         } 
