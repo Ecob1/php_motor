@@ -563,18 +563,27 @@ margin-left: 0px;
     margin-top: -10px;
    }
 
-   .p-name{
-      margin-left: 500px;
-   }
+ .group{
+  display: flex;
+  flex-wrap: wrap;
+ } 
 
-   .p-description{
-    margin-left: 500px;
+ #car-details{
+  padding: 50px;
+  min-width: 400px;
+  width: 53%;
+ }
 
-   }
-   .stock-quatitive{
-    margin-right: 400px;
-   }
-
-  
-
-
+#car-details .car-detail{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.blue{
+  color: blue;
+}
+.red {
+  color: red;
+}
+.silver {
+  color: silver;
+}

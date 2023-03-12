@@ -57,25 +57,22 @@ function buildVehiclesDisplay($vehicles){
 
 function buildingInventoryDisplay($vehicle){
     // $dv = "<script>console.log(". var_dump($vehicle) .")</script>";
+    $dv = "<h2 class='make-model'>$vehicle[invMake] $vehicle[invModel]</h2>";
     $dv .= "<div class='group'>";
+    
+    $dv .= "<div><img class='car-img' src='".$vehicle['invImage']."' alt='Image of ".$vehicle['invMake']. $vehicle['invModel']." on phpmotors.com'></div>";
 
-    $dv .= "<h2 class='make-model'>$vehicle[invMake] $vehicle[invModel]</h2>";
-
-    $dv .= "<p class='p-name'>$vehicle[invMake] $vehicle[invModel] Details </p>";
-
-    $dv .= "<p class='p-description'>$vehicle[invDescription]</p>";
-
-    $dv .= "<p class='p-description'>Color $vehicle[invColor]</p>";
-
-    $dv .= "<span class='stock-quatitive'># in stock: ". $vehicle['invStock'] . "</span>";
+    $dv .= "<div id='car-details'>";
+    $dv .= "<div class='car-detail'>$vehicle[invMake] $vehicle[invModel] Details </div>";
+    $dv .= "<div class='car-detail'>$vehicle[invDescription]</div>";
+    $dv .= "<div class='car-detail " . strtolower($vehicle['invColor']) . "'>Color $vehicle[invColor]</div>";
+    $dv .= "<div class='car-detail'># in stock: " . $vehicle['invStock'] . "</div>";
+    $dv .= "<div class='car-detail'>Price: $$vehicle[invPrice]</div>";
     $dv .= "</div>";
 
-    $dv .= "<img class='car-img' src='".$vehicle['invImage']."' alt='Image of ".$vehicle['invMake']. $vehicle['invModel']." on phpmotors.com'>";
-
-    $dv .= "<p class='p-price'>Price: $$vehicle[invPrice]</p>";
+    $dv .= "</div>";
     
-return $dv;
-
+    return $dv;
 }
 
 ?>
