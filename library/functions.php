@@ -67,7 +67,7 @@ function buildingInventoryDisplay($vehicle){
     $dv .= "<div class='car-detail'>$vehicle[invDescription]</div>";
     $dv .= "<div class='car-detail " . strtolower($vehicle['invColor']) . "'>Color $vehicle[invColor]</div>";
     $dv .= "<div class='car-detail'># in stock: " . $vehicle['invStock'] . "</div>";
-    $dv .= "<div class='car-detail'>Price: $$vehicle[invPrice]</div>";
+    $dv .= "<div class='car-detail price'>Price: $$vehicle[invPrice]</div>";
     $dv .= "</div>";
 
     $dv .= "</div>";

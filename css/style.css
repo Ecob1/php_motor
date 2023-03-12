@@ -558,8 +558,8 @@ margin-left: 0px;
    }
 
    .car-img{
-    width: 450px;
-    height: 300px;
+    width: 350px;
+    height: 200px;
     margin-top: -10px;
    }
 
@@ -586,4 +586,8 @@ margin-left: 0px;
 }
 .silver {
   color: silver;
+}
+
+.price{
+  margin-left: -400px;
 }
