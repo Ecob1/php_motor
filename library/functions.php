@@ -16,10 +16,12 @@ function checkPassword($clientPassword){
 function CreatingNav($classifications){
 
     // Build a navigation bar using the $classifications array
-    $navList = '<ul>';
+    $navList = '<ul  id="navigation-nav">';
     $navList .= "<li><a href='/phpmotors/index.php' title='View the PHP Motors home page'>Home</a></li>";
     foreach ($classifications as $classification) {
-    $navList .= "<li><a href='/phpmotors/index.php?action=".urlencode($classification['classificationName'])."' title='View our $classification[classificationName] product line'>$classification[classificationName]</a></li>";
+    $navList .= "<li><a href='/phpmotors/vehicle/index.php?action=view-classification&classificationName="
+    .urlencode($classification['classificationName']).
+    "' title='View our $classification[classificationName] lineup of vehicles'>$classification[classificationName]</a></li>";
     }
     $navList .= '</ul>';
     return $navList;
@@ -35,4 +37,45 @@ function buildClassificationList($classifications){
     $classificationList .= '</select>'; 
     return $classificationList; 
    }
+
+//This function 
+function buildVehiclesDisplay($vehicles){
+    $dv = '<ul id="inv-display">';
+    foreach ($vehicles as $vehicle) {
+        $dv .= '<li>';
+        $dv .= "<a href='/phpmotors/vehicle/?action=view-second-classification&invId="
+        .urlencode($vehicle['invId']).
+        "' title='View our $vehicle[invId] lineup of vehicles'><img class='car-img' src='$vehicle[invImage]' alt='Image of $vehicle[invMake] $vehicle[invModel] on phpmotors.com'>";
+        $dv .= '<hr>';
+        $dv .= "<h2>$vehicle[invMake] $vehicle[invModel]</h2></a>";
+        $dv .= "<span>$vehicle[invPrice]</span>";
+        $dv .= '</li>';
+    }
+    $dv .= '</ul>';
+    return $dv;
+    }
+
+function buildingInventoryDisplay($vehicle){
+    // $dv = "<script>console.log(". var_dump($vehicle) .")</script>";
+    $dv .= "<div class='group'>";
+
+    $dv .= "<h2 class='make-model'>$vehicle[invMake] $vehicle[invModel]</h2>";
+
+    $dv .= "<p class='p-name'>$vehicle[invMake] $vehicle[invModel] Details </p>";
+
+    $dv .= "<p class='p-description'>$vehicle[invDescription]</p>";
+
+    $dv .= "<p class='p-description'>Color $vehicle[invColor]</p>";
+
+    $dv .= "<span class='stock-quatitive'># in stock: ". $vehicle['invStock'] . "</span>";
+    $dv .= "</div>";
+
+    $dv .= "<img class='car-img' src='".$vehicle['invImage']."' alt='Image of ".$vehicle['invMake']. $vehicle['invModel']." on phpmotors.com'>";
+
+    $dv .= "<p class='p-price'>Price: $$vehicle[invPrice]</p>";
+    
+return $dv;
+
+}
+
 ?>

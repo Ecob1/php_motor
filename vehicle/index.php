@@ -25,6 +25,7 @@ $action = filter_input(INPUT_POST, 'action');
  
 
 switch ($action) {
+
 // Code to deliver the views will be here
 
 case 'addclassification':
@@ -173,15 +174,32 @@ case 'deleteVehicle':
     header('location: /phpmotors/vehicle/');
     exit;
   } else {
-    $message = "<p class='notice'>Error: $invMake $invModel was not
-  deleted.</p>";
+    $message = "<p class='notice'>Error: $invMake $invModel was not deleted.</p>";
     $_SESSION['message'] = $message;
     header('location: /phpmotors/vehicle/');
     exit;
   }
   break;
 
+case 'view-classification':
+  $classificationName = filter_input(INPUT_GET, 'classificationName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+  $vehicles = getVehiclesByClassification($classificationName);
+  if(!count($vehicles)){
+    $message = "<p class='notice'>Sorry, no $classificationName could be found.</p>";
+  } else {
+    $vehicleDisplay = buildVehiclesDisplay($vehicles);
+  }
+  include '../view/classification.php';
+  break;
 
+  
+  case 'view-second-classification':
+    $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_NUMBER_INT);
+    $vehicles = getInvItemInfo($invId);
+    $vehicleDisplay = buildingInventoryDisplay($vehicles);
+    include '../view/vehicle-detail.php';
+    break;
+  
 
 default:  
   $classificationList = buildClassificationList($classifications);

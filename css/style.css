@@ -5,6 +5,11 @@ html * {
 html{
   background-image: url("/phpmotors/images/site/small_check.jpg");
 }
+
+*, *:before, *:after{
+  box-sizing: inherit;
+ }
+
 body{
   background-color: #ffff;
   width: 75%; 
@@ -81,7 +86,7 @@ a{
   text-decoration: underline;  
 }
 
-a:hover {
+.nav a:hover {
   background-color: lightskyblue
 }
 
@@ -417,6 +422,47 @@ margin-left: 0px;
     footer{
         font-size: 17px; 
     }
+
+    /* For vehicle display in classification view */
+	#inv-display {
+		flex-flow: row wrap;
+		justify-content: flex-start;
+	}
+
+	#inv-display h2{
+		font-size: 1rem;
+	}
+
+  #inv-display li{
+    /* margin-bottom: .5em;
+    border: 1px #ccc solid; */
+    margin-left: 20px;
+   }
+
+   #inv-display li{
+    /* margin-bottom: .5em;
+    border: 1px #ccc solid; */
+    margin-left: 20px;
+   }
+
+	#inv-display li {
+		max-width: 90%;
+    max-height: 400px;
+		flex: 1 0 auto;
+		text-align: center;
+		height: auto;
+    width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+ 
+      
+	/* #inv-display div {
+		width: 60%;
+	} */
+  /* The end of the media */
   }
 
   .first{
@@ -462,6 +508,72 @@ margin-left: 0px;
   #account-Management{
     margin-left: 30px;
   }
+
+  #inv-display{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    display: flex;
+   }
+   
+   #inv-display ul li{
+    margin-bottom: .5em;
+    border: 1px #ccc solid;
+    list-style-type: none;
+    flex: 1 1 auto;
+    min-width: 60px;
+   }
+
+   #inv-display li{
+    /* margin-bottom: .5em;
+    border: 1px #ccc solid; */
+    margin-left: 60px;
+   }
+   
+   #inv-display li img {
+    width: 100%;
+   }
+
+   #inv-display .car-img{
+    display: block;
+   }
+
+   #inv-display a{
+    color: #000000;
+    text-decoration: underline;
+    font-size: 12px;
+   }
+
+   #inv-display a:hover{
+      color: none;
+   }
+
+   .stock-quatitive{
+    float: right;
+   }
+
+   .make-model{
+    margin-left: 60px;
+   }
+
+   .car-img{
+    width: 450px;
+    height: 300px;
+    margin-top: -10px;
+   }
+
+   .p-name{
+      margin-left: 500px;
+   }
+
+   .p-description{
+    margin-left: 500px;
+
+   }
+   .stock-quatitive{
+    margin-right: 400px;
+   }
 
   
 
