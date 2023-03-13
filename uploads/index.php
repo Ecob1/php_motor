@@ -95,6 +95,23 @@ switch ($action) {
     
     break;
     default:
-    
+
+    // Call function to return image info from database
+    $imageArray = getImages();
+        
+    // Build the image information into HTML for display
+    if (count($imageArray)) {
+    $imageDisplay = buildImageDisplay($imageArray);
+    } else {
+    $imageDisplay = '<p class="notice">Sorry, no images could be found.</p>';
+    }
+        
+    // Get vehicles information from database
+    $vehicles = getVehicles();
+    // Build a select list of vehicle information for the view
+    $prodSelect = buildVehiclesSelect($vehicles);
+        
+    include '../view/image-admin.php';
+    exit;    
     break;
    }
