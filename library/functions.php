@@ -56,7 +56,6 @@ function buildVehiclesDisplay($vehicles){
     }
 
 function buildingInventoryDisplay($vehicle){
-    // $dv = "<script>console.log(". var_dump($vehicle) .")</script>";
     $dv = "<h2 class='make-model'>$vehicle[invMake] $vehicle[invModel]</h2>";
     $dv .= "<div class='group'>";
     

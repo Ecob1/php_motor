@@ -545,10 +545,6 @@ margin-left: 0px;
     font-size: 12px;
    }
 
-   #inv-display a:hover{
-      color: none;
-   }
-
    .stock-quatitive{
     float: right;
    }
@@ -558,8 +554,8 @@ margin-left: 0px;
    }
 
    .car-img{
-    width: 350px;
-    height: 200px;
+    width: 370px;
+    height: 280px;
     margin-top: -10px;
    }
 
@@ -576,18 +572,8 @@ margin-left: 0px;
 
 #car-details .car-detail{
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom:25px;
 }
-.blue{
-  color: blue;
-}
-.red {
-  color: red;
-}
-.silver {
-  color: silver;
-}
-
 .price{
   margin-left: -400px;
 }
