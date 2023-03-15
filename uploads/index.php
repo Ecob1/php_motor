@@ -2,15 +2,14 @@
 session_start();
 require_once '../library/connections.php';
 require_once '../model/main-model.php';
-require_once '../model/vehicles-model.php';
+
+require_once '../model/vehicle-model.php';
 require_once '../model/uploads-model.php';
 require_once '../library/functions.php';
-
 // Get the array of classifications
 $classifications = getClassifications();
 // Build a navigation bar using the $classifications array
 $navList = CreatingNav($classifications);
-
 $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 if ($action == NULL) {
  $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -20,10 +19,9 @@ if ($action == NULL) {
 * Variables for use with the Image Upload Functionality
 * **************************************************** */
 // directory name where uploaded images are stored
-$image_dir = '/phpmotors/uploads/images';
+$image_dir = '/phpmotors/images/vehicles';
 // The path is the full path from the server root
 $image_dir_path = $_SERVER['DOCUMENT_ROOT'] . $image_dir;
-
 switch ($action) {
     case 'upload':
         // Store the incoming vehicle id and primary picture indicator
@@ -97,8 +95,7 @@ switch ($action) {
     default:
 
     // Call function to return image info from database
-    $imageArray = getImages();
-        
+    $imageArray = getImages();        
     // Build the image information into HTML for display
     if (count($imageArray)) {
     $imageDisplay = buildImageDisplay($imageArray);
@@ -115,3 +112,5 @@ switch ($action) {
     exit;    
     break;
    }
+
+   ?>

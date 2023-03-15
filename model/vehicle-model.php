@@ -1,7 +1,5 @@
 <?php
-// this is the accounts model
-
-// This will handle site registrations
+// this is the vehicle model
 
 function classification($classification){
     // Create a connection object using the phpmotors connection function
@@ -155,4 +153,15 @@ function getSpecificId($invId){
     $stmt->closeCursor();
     return $invInfo;
    }
-?>
+
+   // Obtain information about all vehicles in inventory
+   // Get information for all vehicles
+   function getVehicles(){
+       $db = phpmotorsConnect();
+       $sql = 'SELECT invId, invMake, invModel FROM inventory';
+       $stmt = $db->prepare($sql);
+       $stmt->execute();
+       $invInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+       $stmt->closeCursor();
+       return $invInfo;
+   }

@@ -530,6 +530,10 @@ margin-left: 0px;
     border: 1px #ccc solid; */
     margin-left: 60px;
    }
+
+   #li-img{
+    list-style-type: none; 
+   }
    
    #inv-display li img {
     width: 100%;
@@ -553,10 +557,17 @@ margin-left: 0px;
     margin-left: 60px;
    }
 
-   .car-img{
+   .car-img {
     width: 370px;
     height: 280px;
     margin-top: -10px;
+    /* text-decoration: none; */
+    list-style-type: none;
+   }
+
+   .vehicle-price{
+    text-decoration: none;
+    font-size: 20px;
    }
 
  .group{
@@ -576,4 +587,5 @@ margin-left: 0px;
 }
 .price{
   margin-left: -400px;
+  text-decoration: none;
 }
