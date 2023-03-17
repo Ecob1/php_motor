@@ -35,17 +35,17 @@
             } ?>
 
             <form action="/phpmotors/uploads/" method="post" enctype="multipart/form-data">
-                <label for="invItem">Vehicle</label>
+                <label for="invItem">Vehicle</label><br>
                     <?php echo $prodSelect; ?>
                     <fieldset>
-                        <label>Is this the main image for the vehicle?</label>
+                        <label>Is this the main image for the vehicle?</label><br>
                         <label for="priYes" class="pImage">Yes</label>
                         <input type="radio" name="imgPrimary" id="priYes" class="pImage" value="1">
                         <label for="priNo" class="pImage">No</label>
                         <input type="radio" name="imgPrimary" id="priNo" class="pImage" checked value="0">
-                    </fieldset>
-                <label>Upload Image:</label>
-                <input type="file" name="file1">
+                    </fieldset><br>
+                <label>Upload Image:</label><br>
+                <input type="file" name="file1"><br><br>
                 <input type="submit" class="regbtn" value="Upload">
                 <input type="hidden" name="action" value="upload">              
             </form>  

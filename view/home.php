@@ -14,7 +14,7 @@
 <main>   
   <div class="container">    
     <img class="ownToday" src="/phpmotors/images/site/own_today.png" alt="text_image">               
-    <img class="delorean" src="/phpmotors/images/delorean.jpg" alt="car">
+    <img class="delorean" src="/phpmotors/images/vehicles/delorean.jpg" alt="car">
     <p class="p-dmc"><b>DMC Delorean Reviews</b></p>
     <div class="bullets">        
       <ul>

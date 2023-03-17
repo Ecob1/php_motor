@@ -4,11 +4,6 @@
 // Add image information to the database table
 function storeImages($imgPath, $invId, $imgName, $imgPrimary) {
     $db = phpmotorsConnect();
-    //echo $imgPath;
-    // echo $invId;
-    // echo $imgName;
-    // echo $imgPrimary;
-    // exit;
     $sql = 'INSERT INTO images (invId, imgPath, imgName, imgPrimary) VALUES (:invId, :imgPath, :imgName, :imgPrimary)';
     $stmt = $db->prepare($sql);
     // Store the full size image information
