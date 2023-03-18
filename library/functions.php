@@ -48,25 +48,31 @@ function buildVehiclesDisplay($vehicles){
         "' title='View our $vehicle[invId] lineup of vehicles'><img class='car-img' src='$vehicle[invImage]' alt='Image of $vehicle[invMake] $vehicle[invModel] on phpmotors.com'>";
         $dv .= '<hr>';
         $dv .= "<h2>$vehicle[invMake] $vehicle[invModel]</h2>";
-        $dv .= "<span class='vehicle-price'>$vehicle[invPrice]</span></a>";
+        $dv .= "<span class='vehicle-price'>$".number_format($vehicle['invPrice']) . "</span></a>";
         $dv .= '</li>';
     }
     $dv .= '</ul>';
     return $dv;
     }
 
-function buildingInventoryDisplay($vehicle){
+function buildingInventoryDisplay($vehicle, $imgThumbnail){
     $dv = "<h2 class='make-model'>$vehicle[invMake] $vehicle[invModel]</h2>";
     $dv .= "<div class='group'>";
     
-    $dv .= "<div><img class='car-img' src='".$vehicle['invImage']."' alt='Image of ".$vehicle['invMake']. $vehicle['invModel']." on phpmotors.com'></div>";
+    $dv .= "<div><img class='car-img' src='".$vehicle['imgPath']."' alt='Image of ".$vehicle['invMake']. $vehicle['invModel']." on phpmotors.com'></div>";
 
     $dv .= "<div id='car-details'>";
     $dv .= "<div class='car-detail'>$vehicle[invMake] $vehicle[invModel] Details </div>";
     $dv .= "<div class='car-detail'>$vehicle[invDescription]</div>";
     $dv .= "<div class='car-detail " . strtolower($vehicle['invColor']) . "'>Color $vehicle[invColor]</div>";
     $dv .= "<div class='car-detail'># in stock: " . $vehicle['invStock'] . "</div>";
-    $dv .= "<div class='car-detail price'>Price: $$vehicle[invPrice]</div>";
+    $dv .= "<div class='car-detail price'>Price: $".number_format($vehicle['invPrice']) . "</div>";
+    $dv .= "</div>";
+
+    $dv .= "<div class='outputSmallImage'>";
+    foreach($imgThumbnails as $imgThumbnail){
+        $dv .= "<img class='car-img' src='".$imgThumbnail["imgPath"]."' alt='Image of ".$vehicle['invMake']. $vehicle['invModel']." on phpmotors.com'>";
+    }
     $dv .= "</div>";
 
     $dv .= "</div>";

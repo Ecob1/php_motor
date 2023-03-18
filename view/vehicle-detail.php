@@ -12,6 +12,9 @@
         require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header_nav.php';
         ?>
 <main>
+<?php if(isset($$getThumbnailDisplayImg )){
+        echo $$getThumbnailDisplayImg ;
+    } ?> 
     
     <?php if(isset($vehicleDisplay)){
         echo $vehicleDisplay;

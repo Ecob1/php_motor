@@ -196,7 +196,9 @@ case 'view-classification':
   case 'view-second-classification':
     $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_NUMBER_INT);
     $vehicles = getInvItemInfo($invId);
-    $vehicleDisplay = buildingInventoryDisplay($vehicles);
+    $smThumbnailImage = thumbnailImage($invId);
+    $vehicleDisplay = buildingInventoryDisplay($vehicles,  $imgThumbnail);
+    
     include '../view/vehicle-detail.php';
     break;
   
