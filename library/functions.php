@@ -55,7 +55,7 @@ function buildVehiclesDisplay($vehicles){
     return $dv;
     }
 
-function buildingInventoryDisplay($vehicle, $imgThumbnail){
+function buildingInventoryDisplay($vehicle, $imgThumbnails){
     $dv = "<h2 class='make-model'>$vehicle[invMake] $vehicle[invModel]</h2>";
     $dv .= "<div class='group'>";
     
@@ -71,7 +71,7 @@ function buildingInventoryDisplay($vehicle, $imgThumbnail){
 
     $dv .= "<div class='outputSmallImage'>";
     foreach($imgThumbnails as $imgThumbnail){
-        $dv .= "<img class='car-img' src='".$imgThumbnail["imgPath"]."' alt='Image of ".$vehicle['invMake']. $vehicle['invModel']." on phpmotors.com'>";
+        $dv .= "<img class='car-imgs' src='".$imgThumbnail["imgPath"]."' alt='Image of ".$vehicle['invMake']. $vehicle['invModel']." on phpmotors.com'>";
     }
     $dv .= "</div>";
 

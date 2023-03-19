@@ -9,6 +9,7 @@ require_once '../library/connections.php';
 require_once '../model/main-model.php';
 
 require_once '../model/vehicle-model.php';
+require_once '../model/uploads-model.php';
 
 // Get the functions library
 require_once '../library/functions.php';
@@ -197,8 +198,7 @@ case 'view-classification':
     $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_NUMBER_INT);
     $vehicles = getInvItemInfo($invId);
     $smThumbnailImage = thumbnailImage($invId);
-    $vehicleDisplay = buildingInventoryDisplay($vehicles,  $imgThumbnail);
-    
+    $vehicleDisplay = buildingInventoryDisplay($vehicles, $smThumbnailImage);    
     include '../view/vehicle-detail.php';
     break;
   

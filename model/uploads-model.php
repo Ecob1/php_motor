@@ -67,9 +67,8 @@ function checkExistingImage($imgName){
 // Geting a list of vehicles based on the classification path to display the thumbnail image
 function thumbnailImage($invId){
     $db = phpmotorsConnect();
-    
-    // $sql = 'SELECT inventory.*, images.imgPath FROM inventory JOIN imgaes  ON inventory.invId = images.invId WHERE classificationId IN (SELECT classificationId FROM carclassification WHERE classificationName = :classificationName) AND imgPath LIKE "%-tn%" AND imgPrimary = 1';
-    $sql = 'SELECT imgPath FROM images WHERE imgId = :invId LIKE "%-tn%"';
+    // $sql = 'SELECT  images.imgPath FROM inventory JOIN images ON inventory.invId = images.invId WHERE images.imgPath = :invId LIKE "%-tn%"';
+    $sql = 'SELECT images.imgPath FROM images WHERE images.imgPath = :invId LIKE "%-tn%"';
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':invId', $invId, PDO::PARAM_STR);
     $stmt->execute();
