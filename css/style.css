@@ -2,10 +2,6 @@ html * {
   box-sizing: border-box;
 }
 
-.push{
-  grid-row: inherit;
-}
-
 html{
   background-image: url("/phpmotors/images/site/small_check.jpg");
 }
