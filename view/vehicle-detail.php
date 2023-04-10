@@ -11,12 +11,10 @@
         <?php
         require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header_nav.php';
         ?>
-<main>
-    
+<main>    
     <?php if(isset($vehicleDisplay)){
         echo $vehicleDisplay;
-    } ?>    
-     
+    } ?>        
 </main>
 
 <?php

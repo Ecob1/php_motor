@@ -28,10 +28,9 @@ $action = filter_input(INPUT_POST, 'action');
 switch ($action) {
 
 // Code to deliver the views will be here
-
 case 'addclassification':
 // Filter and store the data
-  $classificationName = trim(filter_input(INPUT_POST, 'classificationName', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+  $classificationName = trim(filter_input(INPUT_POST, 'classificationName', FILTER_SANITIZE_FULL_SPECIAL_CHARS)); 
 
 
   // Check for missing data
@@ -193,7 +192,8 @@ case 'view-classification':
   include '../view/classification.php';
   break;
 
-  
+  // This case will handle to get the info from vehicles and smThumbnailImage function 
+  // to display the data to the vehicle-detail view page to insert into the HTML.  
   case 'view-second-classification':
     $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_NUMBER_INT);
     $vehicles = getInvItemInfo($invId);

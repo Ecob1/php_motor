@@ -62,10 +62,8 @@ function buildingInventoryDisplay($vehicle, $imgThumbnails){
     foreach($imgThumbnails as $imgThumbnail){
         $dv .= "<div class='flex'><img class='car-imgs' src='".$imgThumbnail["imgPath"]."' alt='Image of ".$vehicle['invMake']. $vehicle['invModel']." on phpmotors.com'></div>";
     }
-    $dv .= "</div>";
-    
+    $dv .= "</div>";    
     $dv .= "<div><img class='car-img' src='".$vehicle['imgPath']."' alt='Image of ".$vehicle['invMake']. $vehicle['invModel']." on phpmotors.com'></div>";
-
     $dv .= "<div id='car-details'>";
     $dv .= "<div class='car-detail'>$vehicle[invMake] $vehicle[invModel] Details </div>";
     $dv .= "<div class='car-detail'>$vehicle[invDescription]</div>";
@@ -73,11 +71,7 @@ function buildingInventoryDisplay($vehicle, $imgThumbnails){
     $dv .= "<div class='car-detail'># in stock: " . $vehicle['invStock'] . "</div>";
     $dv .= "<div class='car-detail price'>Price: $".number_format($vehicle['invPrice']) . "</div>";
     $dv .= "</div>";
-
-    
-
-    $dv .= "</div>";
-    
+    $dv .= "</div>";    
     return $dv;
 }
 
